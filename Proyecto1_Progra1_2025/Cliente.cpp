@@ -1,4 +1,5 @@
 #include "Cliente.h"
+#include "Instructor.h"
 
 Cliente::Cliente(){
     id = " ";
@@ -8,9 +9,10 @@ Cliente::Cliente(){
     fechaNacimiento = " ";
     sexo = ' ';
     fechaInscripcion = " ";
+    elInstructor = nullptr;
 }
 
-Cliente::Cliente(string id, string nom, string tel, string correo, string fechaNaci, char sexo, string fechaInscri){
+Cliente::Cliente(string id, string nom, string tel, string correo, string fechaNaci, char sexo, string fechaInscri, Instructor* elIns){
     this->id = id;
     this->nom = nom;
     this->tel = tel;
@@ -18,6 +20,7 @@ Cliente::Cliente(string id, string nom, string tel, string correo, string fechaN
     fechaNacimiento = fechaNaci;
     this->sexo = sexo;
     fechaInscripcion = fechaInscri;
+    elInstructor = elIns;
 }
 
 void Cliente::setId(string id){
@@ -77,6 +80,14 @@ string Cliente::getFechaInscripcion()
     return fechaInscripcion;
 }
 
+void Cliente::setInstructor(Instructor* newIstructor){
+    elInstructor = newIstructor;
+}
+
+Instructor* Cliente::getInstructor(){
+    return elInstructor;
+}
+
 string Cliente::toString(){
     stringstream s;
     s << "El numero de identificacion del cliente es: " << id << endl;
@@ -86,6 +97,7 @@ string Cliente::toString(){
     s << "La fecha de nacimiento del cliente es: " << fechaNacimiento << endl;
     s << "El sexo del cliente es: " << sexo << endl;
     s << "La fecha de inscripcion del cliente es: " << fechaInscripcion << endl;
+    s << "El nombre del instructor del cliente es: " << elInstructor->getNom() << endl;
     return s.str();
 }
 

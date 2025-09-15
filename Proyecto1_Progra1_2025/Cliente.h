@@ -1,6 +1,5 @@
 #pragma once
-#include <iostream>
-#include <sstream>
+#include "Instructor.h"
 using namespace std;
 
 class Cliente{
@@ -12,10 +11,11 @@ private:
 	string fechaNacimiento;
 	char sexo;
 	string fechaInscripcion;
+	Instructor* elInstructor;
 
 public:
 	Cliente();
-	Cliente(string, string, string, string, string, char, string);
+	Cliente(string, string, string, string, string, char, string, Instructor*);
 
 	void setId(string);
 	string getId();
@@ -37,6 +37,9 @@ public:
 
 	void setFechaInscripcion(string);
 	string getFechaInscripcion();
+
+	void setInstructor(Instructor*);
+	Instructor* getInstructor();
 
 	string toString();
 
