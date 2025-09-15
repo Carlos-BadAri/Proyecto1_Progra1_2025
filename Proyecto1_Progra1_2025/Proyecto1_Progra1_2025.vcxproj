@@ -125,11 +125,13 @@
   <ItemGroup>
     <ClInclude Include="Cliente.h" />
     <ClInclude Include="Instructor.h" />
+    <ClInclude Include="Sucursal.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cliente.cpp" />
     <ClCompile Include="Instructor.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Sucursal.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
