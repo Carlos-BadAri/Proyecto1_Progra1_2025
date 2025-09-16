@@ -7,11 +7,11 @@ private:
 	string provincia;
 	string correoElec;
 	string tele;
-	int tam1;
-	int cant1;
+	int tamClie;
+	int cantClie;
 	Cliente** vCliente;
-	int tam2;
-	int cant2;
+	int tamInstru;
+	int cantInstru;
 	Instructor** vInstructor;
 	//ClaseGrupal* vClase; (es de 0 a 8)
 
@@ -33,8 +33,10 @@ public:
 	string getCorreoElec();
 	string getTele();
 
-	void agregarCliente();
-	void agregarInstructor();
+	bool clienteRepetido(string);
+	bool agregarCliente(string);
+	bool instructorRepetido(string);
+	bool agregarInstructor(string);
 
 	~Sucursal();
 

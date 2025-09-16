@@ -6,10 +6,10 @@ Sucursal::Sucursal(){
     provincia = " ";
     correoElec = " ";
     tele== " ";
-    tam1 = 0;
-    tam2 = 0;
-    cant1 = 0;
-    cant2 = 0;
+    tamClie = 0;
+    tamInstru = 0;
+    cantClie = 0;
+    cantInstru = 0;
 
 }
 
@@ -19,18 +19,18 @@ Sucursal::Sucursal(string codigo, string canton, string provincia, string correo
     this->provincia = provincia;
     this->correoElec = correoElec;
     this->tele = tele;
-    this->tam1 = tam1;
-    this->tam2 = tam2;
-    cant1 = 0;
-    cant2 = 0;
+    this->tamClie = tam1;
+    this->tamInstru = tam2;
+    cantClie = 0;
+    cantInstru = 0;
 
-    vCliente  = new Cliente * [this->tam1];
-    for (int i = 0; i < this->tam1; i++) {
+    vCliente  = new Cliente * [this->tamClie];
+    for (int i = 0; i < this->tamClie; i++) {
         vCliente[i] = nullptr;
     }
 
-    vInstructor = new Instructor * [this->tam2];
-    for (int i = 0; i < this->tam2; i++) {
+    vInstructor = new Instructor * [this->tamInstru];
+    for (int i = 0; i < this->tamInstru; i++) {
         vInstructor[i] = nullptr;
     }
 
@@ -52,10 +52,10 @@ void Sucursal::setTele(string tele) {
     this->tele = tele;
 }
 void Sucursal::setTam1(int tam1) {
-    this->tam1 = tam1;
+    this->tamClie = tam1;
 }
 void Sucursal::setTam2(int tam2) {
-    this->tam2 = tam2;
+    this->tamInstru = tam2;
 }
 
 string Sucursal::getCodigo() {
@@ -74,21 +74,50 @@ string Sucursal::getTele() {
     return tele;
 }
 
+bool Sucursal::clienteRepetido(string id) {
+    for (int i = 0; i < cantClie; i++) {
+        if (vCliente[i]->getId() == id)
+            return true;
+    }
 
-void Sucursal::agregarCliente()
-{
+    return false;
 }
 
-void Sucursal::agregarInstructor()
-{
+bool Sucursal::agregarCliente(string id){
+    if (clienteRepetido(id) == true) {
+        return false;
+    }
+    else {
+        return true;
+    }
+
+}
+
+bool Sucursal::instructorRepetido(string id){
+    for (int i = 0; i < cantInstru; i++) {
+        if (vInstructor[i]->getId() == id)
+            return true;
+    }
+
+    return false;
+}
+
+bool Sucursal::agregarInstructor(string id){
+    if (instructorRepetido(id) == true) {
+        return false;
+    }
+    else {
+        return true;
+    }
+
 }
 
 Sucursal::~Sucursal(){
-    for (int i = 0; i < tam1; i++) {
+    for (int i = 0; i < tamClie; i++) {
         delete vCliente[i];
     }
     delete[] vCliente;
-    for (int i = 0; i < tam2; i++) {
+    for (int i = 0; i < tamInstru; i++) {
         delete vInstructor[i];
     }
     delete[] vInstructor;
