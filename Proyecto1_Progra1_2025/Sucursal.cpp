@@ -1,11 +1,12 @@
 #include "Sucursal.h"
+#include "ClaseGrupal.h"
 
 Sucursal::Sucursal(){
     codigo = " ";
     canton = " ";
     provincia = " ";
     correoElec = " ";
-    tele== " ";
+    tele = " ";
     tamClie = 0;
     tamInstru = 0;
     cantClie = 0;
@@ -39,6 +40,7 @@ Sucursal::Sucursal(string codigo, string canton, string provincia, string correo
 void Sucursal::setCodigo(string codigo) {
     this->codigo = codigo;
 }
+
 void Sucursal::setCanton(string canton) {
     this->canton = canton;
 }
@@ -57,10 +59,6 @@ void Sucursal::setTam1(int tam1) {
 void Sucursal::setTam2(int tam2) {
     this->tamInstru = tam2;
 }
-
-string Sucursal::getCodigo() {
-    return codigo;
-}
 string Sucursal::getCanton() {
     return canton;
 }
@@ -74,50 +72,54 @@ string Sucursal::getTele() {
     return tele;
 }
 
-bool Sucursal::clienteRepetido(string id) {
+bool Sucursal::clienteRepetido(Cliente elCliente) {
     for (int i = 0; i < cantClie; i++) {
-        if (vCliente[i]->getId() == id)
+        if (vCliente[i]->getId() == elCliente.getId())
             return true;
     }
 
     return false;
 }
 
-bool Sucursal::agregarCliente(string id){
-    if (clienteRepetido(id) == true) {
-        return false;
+bool Sucursal::agregarCliente(Cliente* elCliente) {
+    if (clienteRepetido(*elCliente)) {
+        return false; // ya existe
     }
-    else {
+    if (cantClie < tamClie) {
+        vCliente[cantClie++] = elCliente;
         return true;
     }
-
+    return false; // no hay espacio
 }
 
-bool Sucursal::instructorRepetido(string id){
+
+bool Sucursal::instructorRepetido(Instructor elInstructor){
     for (int i = 0; i < cantInstru; i++) {
-        if (vInstructor[i]->getId() == id)
+        if (vInstructor[i]->getId() == elInstructor.getId())
             return true;
     }
 
     return false;
 }
 
-bool Sucursal::agregarInstructor(string id){
-    if (instructorRepetido(id) == true) {
-        return false;
-    }
-    else {
-        return true;
+bool Sucursal::agregarInstructor(Instructor* elInstructor){
+        if (instructorRepetido(*elInstructor)) {
+            return false; // ya existe
+        }
+        if (cantInstru < tamInstru) {
+            vInstructor[cantInstru++] = elInstructor;
+            return true;
+        }
+        return false; // no hay espacio
     }
 
-}
 
 Sucursal::~Sucursal(){
-    for (int i = 0; i < tamClie; i++) {
+    for (int i = 0; i < cantClie; i++) {
         delete vCliente[i];
     }
     delete[] vCliente;
-    for (int i = 0; i < tamInstru; i++) {
+    for (int i = 0; i < cantInstru; i++) {
         delete vInstructor[i];
     }
     delete[] vInstructor;

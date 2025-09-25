@@ -12,6 +12,7 @@ private:
 	char sexo;
 	string fechaInscripcion;
 	Instructor* elInstructor;
+	ClaseGrupal* laClase;
 
 public:
 	Cliente();

@@ -47,7 +47,7 @@ string Cliente::getTel(){
     return tel;
 }
 
-void Cliente::setCorreo(string){
+void Cliente::setCorreo(string correo){
     this->correo = correo;
 }
 
@@ -63,7 +63,7 @@ string Cliente::getFechaNacimiento(){
     return fechaNacimiento;
 }
 
-void Cliente::setSexo(char){
+void Cliente::setSexo(char sexo){
     this->sexo = sexo;
 }
 
@@ -97,7 +97,19 @@ string Cliente::toString(){
     s << "La fecha de nacimiento del cliente es: " << fechaNacimiento << endl;
     s << "El sexo del cliente es: " << sexo << endl;
     s << "La fecha de inscripcion del cliente es: " << fechaInscripcion << endl;
-    s << "El nombre del instructor del cliente es: " << elInstructor->getNom() << endl;
+    if (elInstructor != nullptr) {
+        s << "El nombre del instructor del cliente es: " << elInstructor->getNom() << endl;
+    }
+    else {
+        s << "El cliente no tiene instructor asignado." << endl;
+    }
+    if (laClase != nullptr) {
+        s << "El cliente está matriculado en la clase grupal: " << laClase->getCodigo() << endl;
+    }
+    else {
+        s << "El cliente no está matriculado en ninguna clase grupal." << endl;
+    }
+
     return s.str();
 }
 

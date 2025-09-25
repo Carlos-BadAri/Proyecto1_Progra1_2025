@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
 #include <sstream>
+#include "ClaseGrupal.h"
+using namespace std;
+
 class Instructor{
 private:
 	string id;
@@ -10,7 +13,7 @@ private:
 	string fechaNacimiento;
 	//Especialidad* especialidad;
 	//Sucursal* laSucu;
-	//ClaseGrupal* clase;
+	ClaseGrupal* clase;
 	//Mediciones* medicion;
 	//VecEmpleados** v;
 

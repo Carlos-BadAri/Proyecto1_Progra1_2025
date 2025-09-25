@@ -1,5 +1,6 @@
 #pragma once
 #include "Cliente.h"
+#include "Instructor.h"
 class Sucursal{
 private:
 	string codigo;
@@ -33,10 +34,10 @@ public:
 	string getCorreoElec();
 	string getTele();
 
-	bool clienteRepetido(string);
-	bool agregarCliente(string);
-	bool instructorRepetido(string);
-	bool agregarInstructor(string);
+	bool clienteRepetido(Cliente);
+	bool agregarCliente(Cliente*);
+	bool instructorRepetido(Instructor);
+	bool agregarInstructor(Instructor*);
 
 	~Sucursal();
 

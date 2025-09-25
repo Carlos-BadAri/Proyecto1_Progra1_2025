@@ -14,42 +14,42 @@ Instructor::Instructor(string id, string nom, string tel, string correo, string 
     this->correo = correo;
     fechaNacimiento = fechaNaci;
 }
-void Cliente::setId(string id) {
+void Instructor::setId(string id) {
     this->id = id;
 }
 
-string Cliente::getId() {
+string Instructor::getId() {
     return id;
 }
 
-void Cliente::setNom(string nom) {
+void Instructor::setNom(string nom) {
     this->nom = nom;
 }
 
-string Cliente::getNom() {
+string Instructor::getNom() {
     return nom;
 }
 
-void Cliente::setTel(string tel) {
+void Instructor::setTel(string tel) {
     this->tel = tel;
 }
 
-string Cliente::getTel() {
+string Instructor::getTel() {
     return tel;
 }
 
-void Cliente::setCorreo(string) {
+void Instructor::setCorreo(string correo) {
     this->correo = correo;
 }
 
-string Cliente::getCorreo() {
+string Instructor::getCorreo() {
     return correo;
 }
 
-void Cliente::setFechaNacimiento(string fechaNaci) {
+void Instructor::setFechaNacimiento(string fechaNaci) {
     fechaNacimiento = fechaNaci;
 }
 
-string Cliente::getFechaNacimiento() {
+string Instructor::getFechaNacimiento() {
     return fechaNacimiento;
 }
