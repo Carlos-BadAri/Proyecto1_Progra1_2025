@@ -1,3 +1,7 @@
+#include "Sistema.h"
+
 int main() {
-	return 0;
+    Sistema gym; 
+    gym.menu();
+    return 0;
 }

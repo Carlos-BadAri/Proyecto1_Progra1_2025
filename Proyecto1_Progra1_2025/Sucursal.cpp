@@ -71,6 +71,10 @@ string Sucursal::getCorreoElec() {
 string Sucursal::getTele() {
     return tele;
 }
+string Sucursal::getCodigo() {
+    return codigo;
+}
+
 
 bool Sucursal::clienteRepetido(Cliente elCliente) {
     for (int i = 0; i < cantClie; i++) {
@@ -83,13 +87,13 @@ bool Sucursal::clienteRepetido(Cliente elCliente) {
 
 bool Sucursal::agregarCliente(Cliente* elCliente) {
     if (clienteRepetido(*elCliente)) {
-        return false; // ya existe
+        return false;
     }
     if (cantClie < tamClie) {
         vCliente[cantClie++] = elCliente;
         return true;
     }
-    return false; // no hay espacio
+    return false;
 }
 
 
@@ -104,13 +108,13 @@ bool Sucursal::instructorRepetido(Instructor elInstructor){
 
 bool Sucursal::agregarInstructor(Instructor* elInstructor){
         if (instructorRepetido(*elInstructor)) {
-            return false; // ya existe
+            return false;
         }
         if (cantInstru < tamInstru) {
             vInstructor[cantInstru++] = elInstructor;
             return true;
         }
-        return false; // no hay espacio
+        return false;
     }
 
 
