@@ -11,6 +11,7 @@ private:
 
 public:
     Ejercicio(string, string, string);
+    Ejercicio();
 
     void setNombre(string);
     void setDescripcion(string);

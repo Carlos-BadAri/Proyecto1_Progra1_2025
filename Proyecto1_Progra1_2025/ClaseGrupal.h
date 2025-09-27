@@ -13,6 +13,7 @@ private:
 
 public:
 	ClaseGrupal(string, char, int, int, string);
+	ClaseGrupal();
 
 	void setCodigo(string);
 	void setTipo(char);

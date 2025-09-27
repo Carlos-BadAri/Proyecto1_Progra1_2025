@@ -5,6 +5,11 @@ Ejercicio::Ejercicio(string nombre, string descripcion, string areaCuerpo) {
     this->descripcion = descripcion;
     this->areaCuerpo = areaCuerpo;
 }
+Ejercicio::Ejercicio() {
+    nombre = " ";
+    descripcion = " ";
+    areaCuerpo = " ";
+}
 
 void Ejercicio::setNombre(string nombre) {
     this->nombre = nombre;
@@ -34,4 +39,5 @@ string Ejercicio::toString() {
     return s.str();
 }
 
-Ejercicio::~Ejercicio() {}
+Ejercicio::~Ejercicio() {
+}

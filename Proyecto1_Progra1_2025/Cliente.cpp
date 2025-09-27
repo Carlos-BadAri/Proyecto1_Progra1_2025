@@ -10,6 +10,11 @@ Cliente::Cliente(){
     sexo = ' ';
     fechaInscripcion = " ";
     elInstructor = nullptr;
+
+    cantClases = 0;
+    for (int i = 0; i < 3; i++) {
+        vClases[i] = nullptr;
+    }
 }
 
 Cliente::Cliente(string id, string nom, string tel, string correo, string fechaNaci, char sexo, string fechaInscri, Instructor* elIns){
@@ -21,6 +26,11 @@ Cliente::Cliente(string id, string nom, string tel, string correo, string fechaN
     this->sexo = sexo;
     fechaInscripcion = fechaInscri;
     elInstructor = elIns;
+    cantClases = 0;
+
+    for (int i = 0; i < 3; i++) {
+        vClases[i] = nullptr;
+    }
 }
 
 void Cliente::setId(string id){
@@ -88,6 +98,25 @@ Instructor* Cliente::getInstructor(){
     return elInstructor;
 }
 
+bool Cliente::agregarClase(ClaseGrupal* nueva) {
+    if (cantClases < 3) {
+        vClases[cantClases++] = nueva;
+        return true;
+    }
+    return false; //Aqui retorna falso porque ya el cliente tendria 3 clases matriculadas, que es el maximo
+}
+
+int Cliente::getCantClases() {
+    return cantClases;
+}
+
+ClaseGrupal* Cliente::getClase(int pos) {
+    if (pos >= 0 && pos < cantClases) {
+        return vClases[pos];
+    }
+    return nullptr;
+}
+
 string Cliente::toString(){
     stringstream s;
     s << "El numero de identificacion del cliente es: " << id << endl;
@@ -97,14 +126,20 @@ string Cliente::toString(){
     s << "La fecha de nacimiento del cliente es: " << fechaNacimiento << endl;
     s << "El sexo del cliente es: " << sexo << endl;
     s << "La fecha de inscripcion del cliente es: " << fechaInscripcion << endl;
+
     if (elInstructor != nullptr) {
         s << "El nombre del instructor del cliente es: " << elInstructor->getNom() << endl;
     }
     else {
         s << "El cliente no tiene instructor asignado." << endl;
     }
-    if (laClase != nullptr) {
-        s << "El cliente está matriculado en la clase grupal: " << laClase->getCodigo() << endl;
+
+    if (cantClases>0) {
+        s << "El cliente tiene " << cantClases << "inscritas"<< endl;
+        for (int i = 0; i < cantClases; i++) {
+            s << vClases[i]->getCodigo() << endl;
+        }
+
     }
     else {
         s << "El cliente no está matriculado en ninguna clase grupal." << endl;

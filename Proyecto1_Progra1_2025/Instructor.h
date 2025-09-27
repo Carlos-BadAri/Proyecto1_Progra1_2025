@@ -2,6 +2,8 @@
 #include <iostream>
 #include <sstream>
 #include "ClaseGrupal.h"
+#include "Medicion.h"
+#include "Sucursal.h"
 using namespace std;
 
 class Instructor{
@@ -12,14 +14,14 @@ private:
 	string correo;
 	string fechaNacimiento;
 	//Especialidad* especialidad;
-	//Sucursal* laSucu;
+	Sucursal* laSucu;
 	ClaseGrupal* clase;
-	//Mediciones* medicion;
+	Medicion* medicion;
 	//VecEmpleados** v;
 
 public:
 	Instructor();
-	Instructor(string, string, string, string, string);
+	Instructor(string, string, string, string, string,Sucursal*,Medicion*, ClaseGrupal*);
 
 	void setId(string);
 	string getId();
@@ -35,5 +37,14 @@ public:
 
 	void setFechaNacimiento(string);
 	string getFechaNacimiento();
+
+	void setClase(ClaseGrupal* c);
+	ClaseGrupal* getClase();
+
+	string toString();
+
+	~Instructor();
+
+
 };
 

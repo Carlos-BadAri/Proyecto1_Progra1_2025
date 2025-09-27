@@ -12,7 +12,8 @@ private:
 	char sexo;
 	string fechaInscripcion;
 	Instructor* elInstructor;
-	ClaseGrupal* laClase;
+	ClaseGrupal* vClases[3]; 
+	int cantClases;
 
 public:
 	Cliente();
@@ -41,6 +42,10 @@ public:
 
 	void setInstructor(Instructor*);
 	Instructor* getInstructor();
+
+	bool agregarClase(ClaseGrupal*);
+	int getCantClases();
+	ClaseGrupal* getClase(int pos);
 
 	string toString();
 

@@ -5,15 +5,23 @@ Instructor::Instructor(){
     tel = "";
     correo = " ";
     fechaNacimiento = " ";
+    clase = nullptr;
+    medicion = nullptr;
+    laSucu = nullptr;
+    
 }
 
-Instructor::Instructor(string id, string nom, string tel, string correo, string fechaNaci){
+Instructor::Instructor(string id, string nom, string tel, string correo, string fechaNaci, Sucursal* laSucu,Medicion* medicion,ClaseGrupal* clase){
     this->id = id;
     this->nom = nom;
     this->tel = tel;
     this->correo = correo;
     fechaNacimiento = fechaNaci;
+    this->laSucu = laSucu;
+    this->medicion = medicion;
+    this->clase = clase;
 }
+
 void Instructor::setId(string id) {
     this->id = id;
 }
@@ -53,3 +61,17 @@ void Instructor::setFechaNacimiento(string fechaNaci) {
 string Instructor::getFechaNacimiento() {
     return fechaNacimiento;
 }
+void Instructor::setClase(ClaseGrupal* c) { 
+    clase = c; }
+ClaseGrupal* Instructor::getClase() {
+    return clase; }
+
+
+string Instructor::toString() {
+
+}
+
+Instructor::~Instructor(){
+
+}
+

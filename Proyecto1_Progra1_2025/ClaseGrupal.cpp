@@ -6,6 +6,13 @@ ClaseGrupal::ClaseGrupal(string codigo, char tipo, int capMax, int salon, string
     this->salon = salon;
     this->horario = horario;
 }
+ClaseGrupal::ClaseGrupal() {
+    codigo = " ";
+    tipo = ' ';
+    capacidadMax = 0;
+    salon = 0;
+    horario = " ";
+}
 
 void ClaseGrupal::setCodigo(string codigo) {
     this->codigo = codigo;
