@@ -22,5 +22,7 @@ public:
     string listarClientesPorSucursal(string codigo);
     string listarInstructoresPorSucursal(string codigo);
 
+    void menuSucursal(Sucursal*);
+
     ~Sistema();
 };

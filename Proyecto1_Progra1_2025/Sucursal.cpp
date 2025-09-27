@@ -2,28 +2,47 @@
 #include "ClaseGrupal.h"
 
 Sucursal::Sucursal(){
-    codigo = " ";
-    canton = " ";
-    provincia = " ";
-    correoElec = " ";
+    codigo = "";
+    canton = "";
+    provincia = "";
+    correoElec = "";
     tele = " ";
     tamClie = 0;
     tamInstru = 0;
     cantClie = 0;
     cantInstru = 0;
+    cantClase = 0;
+    tamClase = 8;
+
+    vCliente = new Cliente * [this->tamClie];
+    for (int i = 0; i < this->tamClie; i++) {
+        vCliente[i] = nullptr;
+    }
+
+    vInstructor = new Instructor * [this->tamInstru];
+    for (int i = 0; i < this->tamInstru; i++) {
+        vInstructor[i] = nullptr;
+    }
+
+    vClase = new ClaseGrupal * [this->tamClase];
+    for (int i = 0; i < this->tamClase; i++) {
+        vClase[i] = nullptr;
+    }
 
 }
 
-Sucursal::Sucursal(string codigo, string canton, string provincia, string correoElec, string tele, int tam1, int tam2){
+Sucursal::Sucursal(string codigo, string canton, string provincia, string correoElec, string tele, int tam1, int tam2, int tam3){
     this->codigo = codigo;
     this->canton = canton;
     this->provincia = provincia;
     this->correoElec = correoElec;
     this->tele = tele;
-    this->tamClie = tam1;
-    this->tamInstru = tam2;
-    cantClie = 0;
+    tamClie = tam1;
+    tamInstru = tam2;
+    tamClase = tam3;
+   cantClie = 0;
     cantInstru = 0;
+    cantClase = 0;
 
     vCliente  = new Cliente * [this->tamClie];
     for (int i = 0; i < this->tamClie; i++) {
@@ -33,6 +52,11 @@ Sucursal::Sucursal(string codigo, string canton, string provincia, string correo
     vInstructor = new Instructor * [this->tamInstru];
     for (int i = 0; i < this->tamInstru; i++) {
         vInstructor[i] = nullptr;
+    }
+
+    vClase = new ClaseGrupal * [this->tamClase];
+    for (int i = 0; i < this->tamClase; i++) {
+        vClase[i] = nullptr;
     }
 
 }
@@ -116,6 +140,28 @@ bool Sucursal::agregarInstructor(Instructor* elInstructor){
         }
         return false;
     }
+int Sucursal::getCantClientes() {
+    return cantClie;
+}
+
+Cliente* Sucursal::getCliente(int pos) {
+    if (pos >= 0 && pos < cantClie) {
+        return vCliente[pos];
+    }
+    return nullptr;
+}
+
+int Sucursal::getCantInstructores() {
+    return cantInstru;
+}
+
+Instructor* Sucursal::getInstructor(int pos) {
+    if (pos >= 0 && pos < cantInstru) {
+        return vInstructor[pos];
+    }
+    return nullptr;
+}
+
 
 
 Sucursal::~Sucursal(){
@@ -127,4 +173,9 @@ Sucursal::~Sucursal(){
         delete vInstructor[i];
     }
     delete[] vInstructor;
+    for (int i = 0; i < tamClase; i++) {
+        delete vClase[i];
+    }
+    delete[] vClase;
+
 }
