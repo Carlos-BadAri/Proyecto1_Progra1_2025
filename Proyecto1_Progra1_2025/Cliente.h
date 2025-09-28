@@ -1,5 +1,6 @@
 #pragma once
 #include "Instructor.h"
+#include "Medicion.h"
 using namespace std;
 
 class Cliente{
@@ -14,6 +15,11 @@ private:
 	Instructor* elInstructor;
 	ClaseGrupal* vClases[3]; 
 	int cantClases;
+
+	Medicion** vMediciones;
+	int cantMediciones;
+	const static int maxMediciones = 10; //Asigno directamente 10 porque es el maximo que pueden tener
+
 
 public:
 	Cliente();
@@ -46,6 +52,10 @@ public:
 	bool agregarClase(ClaseGrupal*);
 	int getCantClases();
 	ClaseGrupal* getClase(int pos);
+
+	bool agregarMedicion(Medicion* nueva);
+	Medicion* getMedicion(int pos);
+	int getCantMediciones();
 
 	string toString();
 

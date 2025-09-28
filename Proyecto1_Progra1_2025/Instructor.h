@@ -13,11 +13,12 @@ private:
 	string tel;
 	string correo;
 	string fechaNacimiento;
-	//Especialidad* especialidad;
 	Sucursal* laSucu;
 	ClaseGrupal* clase;
 	Medicion* medicion;
-	//VecEmpleados** v;
+	int cantEspecialidades;
+	int tamEspecialidades;
+	string* vEspecialidades;
 
 public:
 	Instructor();
@@ -26,21 +27,19 @@ public:
 
 	void setId(string);
 	string getId();
-
 	void setNom(string);
 	string getNom();
-
 	void setTel(string);
 	string getTel();
-
 	void setCorreo(string);
 	string getCorreo();
-
 	void setFechaNacimiento(string);
 	string getFechaNacimiento();
-
 	void setClase(ClaseGrupal* c);
 	ClaseGrupal* getClase();
+
+	bool agregarEspecialidad(string);
+	bool tieneEspecialidad(string);
 
 	string toString();
 

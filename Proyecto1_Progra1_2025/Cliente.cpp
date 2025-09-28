@@ -15,6 +15,10 @@ Cliente::Cliente(){
     for (int i = 0; i < 3; i++) {
         vClases[i] = nullptr;
     }
+
+    cantMediciones = 0;
+    vMediciones = new Medicion * [maxMediciones];
+    for (int i = 0; i < maxMediciones; i++) vMediciones[i] = nullptr;
 }
 
 Cliente::Cliente(string id, string nom, string tel, string correo, string fechaNaci, char sexo, string fechaInscri, Instructor* elIns){
@@ -31,6 +35,10 @@ Cliente::Cliente(string id, string nom, string tel, string correo, string fechaN
     for (int i = 0; i < 3; i++) {
         vClases[i] = nullptr;
     }
+
+    cantMediciones = 0;
+    vMediciones = new Medicion * [maxMediciones];
+    for (int i = 0; i < maxMediciones; i++) vMediciones[i] = nullptr;
 }
 
 void Cliente::setId(string id){
@@ -117,6 +125,26 @@ ClaseGrupal* Cliente::getClase(int pos) {
     return nullptr;
 }
 
+bool Cliente::agregarMedicion(Medicion* nueva) {
+    if (cantMediciones < maxMediciones) {
+        vMediciones[cantMediciones++] = nueva;
+        return true;
+    }
+    return false; // ya tendria las 10 mediciones que puede tener como maximo
+}
+Medicion* Cliente::getMedicion(int pos) {
+    if (pos >= 0 && pos < cantMediciones) {
+        return vMediciones[pos];
+    }
+    return nullptr;
+}
+
+int Cliente::getCantMediciones() {
+    return cantMediciones;
+}
+
+
+
 string Cliente::toString(){
     stringstream s;
     s << "El numero de identificacion del cliente es: " << id << endl;
@@ -148,6 +176,9 @@ string Cliente::toString(){
     return s.str();
 }
 
-Cliente::~Cliente()
-{
+Cliente::~Cliente(){
+    for (int i = 0; i < cantMediciones; i++) {
+        delete vMediciones[i];
+    }
+    delete[] vMediciones;
 }

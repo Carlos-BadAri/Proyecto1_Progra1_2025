@@ -10,6 +10,10 @@ Instructor::Instructor(){
     clase = nullptr;
     medicion = nullptr;
     laSucu = nullptr;
+
+    tamEspecialidades = 5; // Se le asigna 5 de una vez porque es el maximo de especialidades que puede tener
+    cantEspecialidades = 0;
+    vEspecialidades = new string[tamEspecialidades];
 }
 
 Instructor::Instructor(string id, string nom, string tel, string correo, string fechaNaci, Sucursal* laSucu, Medicion* medicion, ClaseGrupal* clase)
@@ -22,6 +26,10 @@ Instructor::Instructor(string id, string nom, string tel, string correo, string 
     this->laSucu = laSucu;
     this->medicion = medicion;
     this->clase = clase;
+
+    tamEspecialidades = 5; 
+    cantEspecialidades = 0;
+    vEspecialidades = new string[tamEspecialidades];
 }
 
 
@@ -36,6 +44,9 @@ Instructor::Instructor(string id, string nom, string tel, string correo, string 
     medicion = nullptr;
     laSucu = nullptr;
 
+    tamEspecialidades = 5;
+    cantEspecialidades = 0;
+    vEspecialidades = new string[tamEspecialidades];
 }
 
 void Instructor::setId(string id) {
@@ -78,9 +89,44 @@ string Instructor::getFechaNacimiento() {
     return fechaNacimiento;
 }
 void Instructor::setClase(ClaseGrupal* c) { 
-    clase = c; }
+    // Validar que tenga la especialidad requerida
+    string especialidadReq;
+    if (c->getTipo() == 'C') especialidadReq = "CrossFit";
+    else if (c->getTipo() == 'Y') especialidadReq = "Yoga";
+    else especialidadReq = "General";
+
+    if (tieneEspecialidad(especialidadReq)) {
+        clase = c;
+    }
+    else {
+        clase = nullptr;//Aqui le asigno nullptr porque la clase siguiria basia, ya que no tiene la esppecialidad
+    }
+}
 ClaseGrupal* Instructor::getClase() {
     return clase; }
+
+bool Instructor::agregarEspecialidad(string especialidad) {
+    if (cantEspecialidades < tamEspecialidades) {
+        for (int i = 0; i < cantEspecialidades; i++) {
+            if (vEspecialidades[i] == especialidad) {
+                return false;
+            }
+        }
+        vEspecialidades[cantEspecialidades++] = especialidad;
+        return true;
+    }
+    return false;
+}
+
+bool Instructor::tieneEspecialidad(string especialidad) {
+    for (int i = 0; i < cantEspecialidades; i++) {
+        if (vEspecialidades[i] == especialidad) {
+            return true;
+        }
+    }
+    return false;
+}
+
 
 
 string Instructor::toString() {
@@ -88,6 +134,6 @@ string Instructor::toString() {
 }
 
 Instructor::~Instructor(){
-
+    delete[] vEspecialidades;
 }
 
