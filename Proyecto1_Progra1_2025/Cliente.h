@@ -1,6 +1,7 @@
 #pragma once
 #include "Instructor.h"
 #include "Medicion.h"
+#include "ClaseGrupal.h"
 using namespace std;
 
 class Cliente{
@@ -52,6 +53,7 @@ public:
 	bool agregarClase(ClaseGrupal*);
 	int getCantClases();
 	ClaseGrupal* getClase(int pos);
+	bool desmatricularDeClase(string);
 
 	bool agregarMedicion(Medicion* nueva);
 	Medicion* getMedicion(int pos);

@@ -107,11 +107,42 @@ Instructor* Cliente::getInstructor(){
 }
 
 bool Cliente::agregarClase(ClaseGrupal* nueva) {
-    if (cantClases < 3) {
-        vClases[cantClases++] = nueva;
-        return true;
+    if (nueva == nullptr) {
+        return false;
     }
-    return false; //Aqui retorna falso porque ya el cliente tendria 3 clases matriculadas, que es el maximo
+
+    for (int i = 0; i < cantClases; i++) {
+        if (vClases[i] == nueva) {
+            return false;
+        }
+    }
+
+    if (cantClases = 3) {
+        return false;
+    }
+
+   
+    if (!nueva->agregarCliente(this)) {//Aqui la validacion le toca a la clase grupal(recordar hacer esto al otro lado)
+        return false; //la clase rechazo al cliente porque o ya estaba llena o porque ya el cliente estaba inscrito en ella
+    }
+
+    vClases[cantClases++] = nueva;
+    return true;
+}
+
+bool Cliente::desmatricularDeClase(string codigoClase) {
+    for (int i = 0; i < cantClases; i++) {
+        if (vClases[i] != nullptr && vClases[i]->getCodigo() == codigoClase) {//Aqui estoy haciendo es buscar entre las lcases matriucladas por el cliente
+            bool bandera = vClases[i]->eliminarCliente(this->getId());//Aqui elimino al cliente, pero desde la clase
+
+            for (int j = i; j < cantClases - 1; j++) {//Corrimiento para que no hayan huecos.
+                vClases[j] = vClases[j + 1];
+            }
+            vClases[--cantClases] = nullptr;
+            return bandera;
+        }
+    }
+    return false;
 }
 
 int Cliente::getCantClases() {
@@ -130,7 +161,7 @@ bool Cliente::agregarMedicion(Medicion* nueva) {
         vMediciones[cantMediciones++] = nueva;
         return true;
     }
-    return false; // ya tendria las 10 mediciones que puede tener como maximo
+    return false; 
 }
 Medicion* Cliente::getMedicion(int pos) {
     if (pos >= 0 && pos < cantMediciones) {

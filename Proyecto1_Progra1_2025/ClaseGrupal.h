@@ -1,13 +1,16 @@
 #pragma once
 #include <iostream>
 #include <sstream>
+#include "Cliente.h"
 using namespace std;
 
 class ClaseGrupal{
 private:
 	string codigo;
 	char tipo;
-	int capacidadMax;
+	Cliente** vClientes; 
+	int cant;
+	int capacidadMax;//Este es tam
 	int salon;
 	string horario;
 
@@ -27,6 +30,13 @@ public:
 	int getSalon();
 	string getHorario();
 
+	bool agregarCliente(Cliente*);
+	bool eliminarCliente(string idCliente);
+	string listarClientes();
+
+	int getCant();
+
+	string toString();
 	~ClaseGrupal();
 
 
