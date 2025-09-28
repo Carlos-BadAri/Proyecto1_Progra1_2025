@@ -16,7 +16,6 @@ private:
     double cadera;
     double pecho;
     double muslo;
-    double imc;
 
 public:
     Medicion(string, double, double, double, double, int, double, double, double, double, double);
@@ -46,7 +45,6 @@ public:
     double getMuslo();
     double getIMC();
 
-    void calcularIMC();
     string clasificacionIMC();
     double calcularProteina(char sexo, bool haceEjercicio);
     int calcularVasosAgua();

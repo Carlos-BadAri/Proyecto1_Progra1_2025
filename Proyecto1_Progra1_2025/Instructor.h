@@ -22,6 +22,7 @@ private:
 public:
 	Instructor();
 	Instructor(string, string, string, string, string,Sucursal*,Medicion*, ClaseGrupal*);
+	Instructor(string, string, string, string, string);
 
 	void setId(string);
 	string getId();

@@ -199,7 +199,7 @@ void Sistema::menuSucursal(Sucursal* suc) {
             string correoI;
             string fechaNacimientoI;
 
-            cout << "Ingrese ID del cliente: ";
+            cout << "Ingrese ID del instructor: ";
             cin >> idI;
             cout << "Ingrese nombre: ";
             cin >> nomI;

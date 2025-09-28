@@ -1,4 +1,6 @@
 #include "Instructor.h"
+
+
 Instructor::Instructor(){
     id = " ";
     nom = " ";
@@ -8,10 +10,10 @@ Instructor::Instructor(){
     clase = nullptr;
     medicion = nullptr;
     laSucu = nullptr;
-    
 }
 
-Instructor::Instructor(string id, string nom, string tel, string correo, string fechaNaci, Sucursal* laSucu,Medicion* medicion,ClaseGrupal* clase){
+Instructor::Instructor(string id, string nom, string tel, string correo, string fechaNaci, Sucursal* laSucu, Medicion* medicion, ClaseGrupal* clase)
+{
     this->id = id;
     this->nom = nom;
     this->tel = tel;
@@ -20,6 +22,20 @@ Instructor::Instructor(string id, string nom, string tel, string correo, string 
     this->laSucu = laSucu;
     this->medicion = medicion;
     this->clase = clase;
+}
+
+
+
+Instructor::Instructor(string id, string nom, string tel, string correo, string fechaNaci){
+    this->id = id;
+    this->nom = nom;
+    this->tel = tel;
+    this->correo = correo;
+    fechaNacimiento = fechaNaci;
+    clase = nullptr;
+    medicion = nullptr;
+    laSucu = nullptr;
+
 }
 
 void Instructor::setId(string id) {

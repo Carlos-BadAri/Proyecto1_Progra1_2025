@@ -12,7 +12,7 @@ Sucursal::Sucursal(){
     cantClie = 0;
     cantInstru = 0;
     cantClase = 0;
-    tamClase = 8;
+    tamClase = 8;//Se asigna directamente 8 porque por defecto una sucursal no puede tener mas de 8 clases
 
     vCliente = new Cliente * [this->tamClie];
     for (int i = 0; i < this->tamClie; i++) {
@@ -39,7 +39,12 @@ Sucursal::Sucursal(string codigo, string canton, string provincia, string correo
     this->tele = tele;
     tamClie = tam1;
     tamInstru = tam2;
-    tamClase = tam3;
+    if (tam3 < 8) {
+        tamClase = tam3;
+    }
+    else {
+        tamClase = 8;//Solo va a almacenar las 8 primeras clases que haya, ya que no se puede pasar de 8
+    }
    cantClie = 0;
     cantInstru = 0;
     cantClase = 0;
@@ -162,7 +167,34 @@ Instructor* Sucursal::getInstructor(int pos) {
     return nullptr;
 }
 
+bool Sucursal::claseRepetido(ClaseGrupal laClase) {
+    for (int i = 0; i < cantClase; i++) {
+        if (vClase[i]->getCodigo() == laClase.getCodigo())
+            return true;
+    }
 
+    return false;
+}
+
+bool Sucursal::agregarClase(ClaseGrupal* nueva) {
+    if (claseRepetido(*nueva)) {
+        return false;
+    }
+    if (cantClase < tamClase) {
+        vClase[cantClase++] = nueva;
+        return true;
+    }
+    return false;
+}
+int Sucursal::getCantClases() {
+    return cantClase;
+}
+ClaseGrupal* Sucursal::getClase(int pos) {
+    if (pos >= 0 && pos < cantClase) {
+        return vClase[pos];
+    }
+    return nullptr;
+}
 
 Sucursal::~Sucursal(){
     for (int i = 0; i < cantClie; i++) {

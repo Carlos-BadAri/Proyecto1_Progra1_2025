@@ -11,6 +11,11 @@ Rutina::Rutina(int tam) {
 
 bool Rutina::agregarEjercicio(Ejercicio* nuevo) {
     if (cant < tam) {
+        for (int i = 0; i < cant; i++) {//Este for es para poder comprobar si el ejercicio ya esta, para que el cliente no tenga dos ejercicios repetidos
+            if (vEjercicios[i]->getNombre() == nuevo->getNombre()) {
+                return false; // Ya existe
+            }
+        }
         vEjercicios[cant++] = nuevo;
         return true;
     }
