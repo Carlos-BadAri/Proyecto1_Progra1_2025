@@ -1,6 +1,4 @@
 #include "Instructor.h"
-
-
 Instructor::Instructor(){
     id = " ";
     nom = " ";
