@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include "Sucursal.h"
+#include "ClaseGrupal.h"
 using namespace std;
 
 class Sistema {
@@ -12,7 +13,7 @@ private:
 
 public:
     Sistema(int = 30);
-    
+
     void menu();
 
     bool agregarSucursal(Sucursal*);

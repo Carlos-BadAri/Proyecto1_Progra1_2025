@@ -96,14 +96,30 @@ double Medicion::getIMC() {
 
 string Medicion::clasificacionIMC() {
     double imc = getIMC();
-    if (imc < 16.0) return "Delgadez severa";
-    else if (imc < 17.0) return "Delgadez moderada";
-    else if (imc < 18.5) return "Delgadez leve";
-    else if (imc < 25.0) return "Normal";
-    else if (imc < 30.0) return "Pre-obesidad";
-    else if (imc < 35.0) return "Obesidad leve";
-    else if (imc < 40.0) return "Obesidad media";
-    else return "Obesidad mórbida";
+    if (imc < 16.0) { 
+        return "Delgadez severa";
+    }
+    else if (imc < 17.0) {
+        return "Delgadez moderada";
+    }
+    else if (imc < 18.5) {
+        return "Delgadez leve";
+    }
+    else if (imc < 25.0) {
+        return "Normal";
+    }
+    else if (imc < 30.0) {
+        return "Pre-obesidad"; 
+    }
+    else if (imc < 35.0) {
+        return "Obesidad leve";
+    }
+    else if (imc < 40.0) {
+        return "Obesidad media";
+    }
+    else {
+        return "Obesidad mórbida"; 
+    }
 }
 
 double Medicion::calcularProteina(char sexo, bool haceEjercicio) {

@@ -53,7 +53,7 @@ string ClaseGrupal::getHorario(){
     return horario;
 }
 bool ClaseGrupal::agregarCliente(Cliente* c) {
-    if (cant = capacidadMax) {
+    if (cant >= capacidadMax) {
         return false;//Esto en caso de que no haya mas campo en la clase
     }
     for (int i = 0; i < cant; i++) {

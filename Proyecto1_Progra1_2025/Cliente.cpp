@@ -117,7 +117,7 @@ bool Cliente::agregarClase(ClaseGrupal* nueva) {
         }
     }
 
-    if (cantClases = 3) {
+    if (cantClases == 3) {
         return false;
     }
 

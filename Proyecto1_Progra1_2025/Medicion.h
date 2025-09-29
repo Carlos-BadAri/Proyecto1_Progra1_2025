@@ -46,7 +46,7 @@ public:
     double getIMC();
 
     string clasificacionIMC();
-    double calcularProteina(char sexo, bool haceEjercicio);
+    double calcularProteina(char, bool);
     int calcularVasosAgua();
 
     string toString();

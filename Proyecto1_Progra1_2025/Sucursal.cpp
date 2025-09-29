@@ -195,6 +195,22 @@ ClaseGrupal* Sucursal::getClase(int pos) {
     }
     return nullptr;
 }
+Cliente* Sucursal::buscarCliente(string id) {
+    for (int i = 0; i < cantClie; i++) {
+        if (vCliente[i]->getId() == id)
+            return vCliente[i];
+    }
+    return nullptr;
+}
+
+ClaseGrupal* Sucursal::buscarClase(string codigo) {
+    for (int i = 0; i < cantClase; i++) {
+        if (vClase[i]->getCodigo() == codigo)
+            return vClase[i];
+    }
+    return nullptr;
+}
+
 
 Sucursal::~Sucursal(){
     for (int i = 0; i < cantClie; i++) {

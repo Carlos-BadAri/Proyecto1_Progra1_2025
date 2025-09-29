@@ -130,7 +130,36 @@ bool Instructor::tieneEspecialidad(string especialidad) {
 
 
 string Instructor::toString() {
+    stringstream ss;
+    ss << "ID: " << id << endl;
+    ss << "Nombre: " << nom << endl;
+    ss << "Telefono: " << tel << endl;
+    ss << "Correo: " << correo << endl;
+    ss << "Fecha de nacimiento: " << fechaNacimiento << endl;
 
+    if (laSucu)
+        ss << "Sucursal: " << laSucu->getCodigo() << endl;
+    else
+        ss << "Sucursal: Ninguna" << endl;
+
+    if (clase)
+        ss << "Clase asignada: " << clase->getCodigo() << endl;
+    else
+        ss << "Clase asignada: Ninguna" << endl;
+
+    ss << "Especialidades: ";
+    if (cantEspecialidades > 0) {
+        for (int i = 0; i < cantEspecialidades; i++) {
+            ss << vEspecialidades[i];
+            if (i < cantEspecialidades - 1) ss << ", ";
+        }
+        ss << endl;
+    }
+    else {
+        ss << "Ninguna" << endl;
+    }
+
+    return ss.str();
 }
 
 Instructor::~Instructor(){
