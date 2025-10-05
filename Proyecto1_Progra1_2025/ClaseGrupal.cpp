@@ -1,4 +1,5 @@
 #include "ClaseGrupal.h"
+#include "Cliente.h"
 ClaseGrupal::ClaseGrupal() {
     codigo = " ";
     tipo = ' ';
@@ -8,12 +9,13 @@ ClaseGrupal::ClaseGrupal() {
     cant = 0;
     vClientes = nullptr;
 }
-ClaseGrupal::ClaseGrupal(string codigo, char tipo, int capMax, int salon, string horario) {
+ClaseGrupal::ClaseGrupal(string codigo, char tipo, int capMax, int salon, string horario, Instructor* ins) {
     this->codigo = codigo;
     this->tipo = tipo;
     this->capacidadMax = capMax;
     this->salon = salon;
     this->horario = horario;
+    this->ins = ins;
     cant = 0;
     vClientes = new Cliente * [capacidadMax];
     for (int i = 0; i < capacidadMax; i++) {
@@ -24,32 +26,32 @@ ClaseGrupal::ClaseGrupal(string codigo, char tipo, int capMax, int salon, string
 void ClaseGrupal::setCodigo(string codigo) {
     this->codigo = codigo;
 }
-void ClaseGrupal::setTipo(char tipo){
+void ClaseGrupal::setTipo(char tipo) {
     this->tipo = tipo;
 }
-void ClaseGrupal::setCapacidad(int capMax){
+void ClaseGrupal::setCapacidad(int capMax) {
     capacidadMax = capMax;
 }
-void ClaseGrupal::setSalon(int salon){
+void ClaseGrupal::setSalon(int salon) {
     this->salon = salon;
 }
-void ClaseGrupal::setHorario(string horario){
+void ClaseGrupal::setHorario(string horario) {
     this->horario = horario;
 }
 
 string ClaseGrupal::getCodigo() {
     return codigo;
 }
-char ClaseGrupal::getTipo(){
+char ClaseGrupal::getTipo() {
     return tipo;
 }
-int ClaseGrupal::getCapacidad(){
+int ClaseGrupal::getCapacidad() {
     return capacidadMax;
 }
-int ClaseGrupal::getSalon(){
+int ClaseGrupal::getSalon() {
     return salon;
 }
-string ClaseGrupal::getHorario(){
+string ClaseGrupal::getHorario() {
     return horario;
 }
 bool ClaseGrupal::agregarCliente(Cliente* c) {
@@ -110,5 +112,7 @@ string ClaseGrupal::toString() {
 }
 
 ClaseGrupal::~ClaseGrupal() {
-    delete[] vClientes;
+    if (vClientes)
+        delete[] vClientes;
 }
+

@@ -1,7 +1,11 @@
 #pragma once
 #include "Cliente.h"
 #include "Instructor.h"
-class Sucursal{
+
+class Cliente;
+class Instructor;
+
+class Sucursal {
 private:
 	string codigo;
 	string canton;
@@ -20,7 +24,7 @@ private:
 
 public:
 	Sucursal();
-	Sucursal(string, string, string, string, string, int, int,int);
+	Sucursal(string, string, string, string, string, int, int, int);
 
 	void setCodigo(string);
 	void setCanton(string);
@@ -50,15 +54,12 @@ public:
 	bool claseRepetido(ClaseGrupal);
 	bool agregarClase(ClaseGrupal*);
 	int getCantClases();
-	ClaseGrupal* getClase(int); 
+	ClaseGrupal* getClase(int);
 
 	Cliente* buscarCliente(string);
 	ClaseGrupal* buscarClase(string);
+	Instructor* buscarInstruc(string);
 
 	~Sucursal();
-
-
-
-
 };
 

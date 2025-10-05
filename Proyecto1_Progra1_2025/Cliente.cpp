@@ -1,7 +1,7 @@
 #include "Cliente.h"
 #include "Instructor.h"
 
-Cliente::Cliente(){
+Cliente::Cliente() {
     id = " ";
     nom = " ";
     tel = " ";
@@ -21,7 +21,7 @@ Cliente::Cliente(){
     for (int i = 0; i < maxMediciones; i++) vMediciones[i] = nullptr;
 }
 
-Cliente::Cliente(string id, string nom, string tel, string correo, string fechaNaci, char sexo, string fechaInscri, Instructor* elIns){
+Cliente::Cliente(string id, string nom, string tel, string correo, string fechaNaci, char sexo, string fechaInscri, Instructor* elIns) {
     this->id = id;
     this->nom = nom;
     this->tel = tel;
@@ -41,55 +41,55 @@ Cliente::Cliente(string id, string nom, string tel, string correo, string fechaN
     for (int i = 0; i < maxMediciones; i++) vMediciones[i] = nullptr;
 }
 
-void Cliente::setId(string id){
+void Cliente::setId(string id) {
     this->id = id;
 }
 
-string Cliente::getId(){
+string Cliente::getId() {
     return id;
 }
 
-void Cliente::setNom(string nom){
+void Cliente::setNom(string nom) {
     this->nom = nom;
 }
 
-string Cliente::getNom(){
+string Cliente::getNom() {
     return nom;
 }
 
-void Cliente::setTel(string tel){
+void Cliente::setTel(string tel) {
     this->tel = tel;
 }
 
-string Cliente::getTel(){
+string Cliente::getTel() {
     return tel;
 }
 
-void Cliente::setCorreo(string correo){
+void Cliente::setCorreo(string correo) {
     this->correo = correo;
 }
 
-string Cliente::getCorreo(){
+string Cliente::getCorreo() {
     return correo;
 }
 
-void Cliente::setFechaNacimiento(string fechaNaci){
+void Cliente::setFechaNacimiento(string fechaNaci) {
     fechaNacimiento = fechaNaci;
 }
 
-string Cliente::getFechaNacimiento(){
+string Cliente::getFechaNacimiento() {
     return fechaNacimiento;
 }
 
-void Cliente::setSexo(char sexo){
+void Cliente::setSexo(char sexo) {
     this->sexo = sexo;
 }
 
-char Cliente::getSexo(){
+char Cliente::getSexo() {
     return sexo;
 }
 
-void Cliente::setFechaInscripcion(string fechaInscri){
+void Cliente::setFechaInscripcion(string fechaInscri) {
     fechaInscripcion = fechaInscri;
 }
 
@@ -98,11 +98,11 @@ string Cliente::getFechaInscripcion()
     return fechaInscripcion;
 }
 
-void Cliente::setInstructor(Instructor* newIstructor){
+void Cliente::setInstructor(Instructor* newIstructor) {
     elInstructor = newIstructor;
 }
 
-Instructor* Cliente::getInstructor(){
+Instructor* Cliente::getInstructor() {
     return elInstructor;
 }
 
@@ -121,7 +121,7 @@ bool Cliente::agregarClase(ClaseGrupal* nueva) {
         return false;
     }
 
-   
+
     if (!nueva->agregarCliente(this)) {//Aqui la validacion le toca a la clase grupal(recordar hacer esto al otro lado)
         return false; //la clase rechazo al cliente porque o ya estaba llena o porque ya el cliente estaba inscrito en ella
     }
@@ -161,7 +161,7 @@ bool Cliente::agregarMedicion(Medicion* nueva) {
         vMediciones[cantMediciones++] = nueva;
         return true;
     }
-    return false; 
+    return false;
 }
 Medicion* Cliente::getMedicion(int pos) {
     if (pos >= 0 && pos < cantMediciones) {
@@ -176,7 +176,7 @@ int Cliente::getCantMediciones() {
 
 
 
-string Cliente::toString(){
+string Cliente::toString() {
     stringstream s;
     s << "El numero de identificacion del cliente es: " << id << endl;
     s << "El nombre del cliente es: " << nom << endl;
@@ -193,8 +193,9 @@ string Cliente::toString(){
         s << "El cliente no tiene instructor asignado." << endl;
     }
 
-    if (cantClases>0) {
-        s << "El cliente tiene " << cantClases << "inscritas"<< endl;
+    if (cantClases > 0) {
+        s << "El cliente tiene " << cantClases << " inscritas" << endl;
+
         for (int i = 0; i < cantClases; i++) {
             s << vClases[i]->getCodigo() << endl;
         }
@@ -207,9 +208,10 @@ string Cliente::toString(){
     return s.str();
 }
 
-Cliente::~Cliente(){
+Cliente::~Cliente() {
     for (int i = 0; i < cantMediciones; i++) {
         delete vMediciones[i];
     }
     delete[] vMediciones;
 }
+

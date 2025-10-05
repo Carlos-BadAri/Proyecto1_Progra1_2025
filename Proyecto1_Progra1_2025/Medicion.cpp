@@ -1,6 +1,6 @@
 ﻿#include "Medicion.h"
 
-Medicion::Medicion(string fecha, double peso, double estatura,double porcentajeGrasa, double porcentajeMusculo,int edadMetabolica, double grasaVisceral,double cintura, double cadera, double pecho, double muslo) {
+Medicion::Medicion(string fecha, double peso, double estatura, double porcentajeGrasa, double porcentajeMusculo, int edadMetabolica, double grasaVisceral, double cintura, double cadera, double pecho, double muslo) {
     this->fecha = fecha;
     this->peso = peso;
     this->estatura = estatura;
@@ -12,76 +12,76 @@ Medicion::Medicion(string fecha, double peso, double estatura,double porcentajeG
     this->cadera = cadera;
     this->pecho = pecho;
     this->muslo = muslo;
-   
+
 }
 
 void Medicion::setFecha(string f) {
-    fecha = f; 
+    fecha = f;
 }
 void Medicion::setPeso(double p) {
     peso = p;
-    
+
 }
-void Medicion::setEstatura(double e) { 
-    estatura = e; 
-   
+void Medicion::setEstatura(double e) {
+    estatura = e;
+
 }
 void Medicion::setPorcentajeGrasa(double g) {
-    porcentajeGrasa = g; 
+    porcentajeGrasa = g;
 }
 void Medicion::setPorcentajeMusculo(double m) {
-    porcentajeMusculo = m; 
+    porcentajeMusculo = m;
 }
 void Medicion::setEdadMetabolica(int e) {
-    edadMetabolica = e; 
+    edadMetabolica = e;
 }
 void Medicion::setGrasaVisceral(double gv) {
-    grasaVisceral = gv; 
+    grasaVisceral = gv;
 }
 void Medicion::setCintura(double c) {
-    cintura = c; 
+    cintura = c;
 }
 void Medicion::setCadera(double c) {
-    cadera = c; 
+    cadera = c;
 }
 void Medicion::setPecho(double p) {
-    pecho = p; 
+    pecho = p;
 }
 void Medicion::setMuslo(double m) {
-    muslo = m; 
+    muslo = m;
 }
 
-string Medicion::getFecha() { 
-    return fecha; 
+string Medicion::getFecha() {
+    return fecha;
 }
 double Medicion::getPeso() {
-    return peso; 
+    return peso;
 }
 double Medicion::getEstatura() {
-    return estatura; 
+    return estatura;
 }
-double Medicion::getPorcentajeGrasa() { 
-    return porcentajeGrasa; 
+double Medicion::getPorcentajeGrasa() {
+    return porcentajeGrasa;
 }
-double Medicion::getPorcentajeMusculo() { 
-    return porcentajeMusculo; 
+double Medicion::getPorcentajeMusculo() {
+    return porcentajeMusculo;
 }
 int Medicion::getEdadMetabolica() {
-    return edadMetabolica; 
+    return edadMetabolica;
 }
 double Medicion::getGrasaVisceral() {
-    return grasaVisceral; 
+    return grasaVisceral;
 }
 double Medicion::getCintura() {
     return cintura;
 }
-double Medicion::getCadera() { 
-    return cadera; 
+double Medicion::getCadera() {
+    return cadera;
 }
-double Medicion::getPecho() { 
-    return pecho; 
+double Medicion::getPecho() {
+    return pecho;
 }
-double Medicion::getMuslo() { 
+double Medicion::getMuslo() {
     return muslo;
 }
 double Medicion::getIMC() {
@@ -96,7 +96,7 @@ double Medicion::getIMC() {
 
 string Medicion::clasificacionIMC() {
     double imc = getIMC();
-    if (imc < 16.0) { 
+    if (imc < 16.0) {
         return "Delgadez severa";
     }
     else if (imc < 17.0) {
@@ -109,7 +109,7 @@ string Medicion::clasificacionIMC() {
         return "Normal";
     }
     else if (imc < 30.0) {
-        return "Pre-obesidad"; 
+        return "Pre-obesidad";
     }
     else if (imc < 35.0) {
         return "Obesidad leve";
@@ -118,7 +118,7 @@ string Medicion::clasificacionIMC() {
         return "Obesidad media";
     }
     else {
-        return "Obesidad mórbida"; 
+        return "Obesidad mórbida";
     }
 }
 

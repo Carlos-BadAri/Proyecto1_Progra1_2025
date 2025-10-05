@@ -4,7 +4,9 @@
 #include "ClaseGrupal.h"
 using namespace std;
 
-class Cliente{
+class Instructor;
+
+class Cliente {
 private:
 	string id;
 	string nom;
@@ -14,7 +16,7 @@ private:
 	char sexo;
 	string fechaInscripcion;
 	Instructor* elInstructor;
-	ClaseGrupal* vClases[3]; 
+	ClaseGrupal* vClases[3];
 	int cantClases;
 
 	Medicion** vMediciones;
@@ -64,4 +66,3 @@ public:
 	~Cliente();
 
 };
-

@@ -1,50 +1,43 @@
-#pragma once
-#include <iostream>
-#include <sstream>
-#include "ClaseGrupal.h"
-#include "Medicion.h"
-#include "Sucursal.h"
-using namespace std;
+#include "Ejercicio.h"
 
-class Instructor{
-private:
-	string id;
-	string nom;
-	string tel;
-	string correo;
-	string fechaNacimiento;
-	Sucursal* laSucu;
-	ClaseGrupal* clase;
-	Medicion* medicion;
-	int cantEspecialidades;
-	int tamEspecialidades;
-	string* vEspecialidades;
+Ejercicio::Ejercicio(string nombre, string descripcion, string areaCuerpo) {
+    this->nombre = nombre;
+    this->descripcion = descripcion;
+    this->areaCuerpo = areaCuerpo;
+}
+Ejercicio::Ejercicio() {
+    nombre = " ";
+    descripcion = " ";
+    areaCuerpo = " ";
+}
 
-public:
-	Instructor();
-	Instructor(string, string, string, string, string,Sucursal*,Medicion*, ClaseGrupal*);
-	Instructor(string, string, string, string, string);
+void Ejercicio::setNombre(string nombre) {
+    this->nombre = nombre;
+}
+void Ejercicio::setDescripcion(string descripcion) {
+    this->descripcion = descripcion;
+}
+void Ejercicio::setAreaCuerpo(string areaCuerpo) {
+    this->areaCuerpo = areaCuerpo;
+}
 
-	void setId(string);
-	string getId();
-	void setNom(string);
-	string getNom();
-	void setTel(string);
-	string getTel();
-	void setCorreo(string);
-	string getCorreo();
-	void setFechaNacimiento(string);
-	string getFechaNacimiento();
-	void setClase(ClaseGrupal* c);
-	ClaseGrupal* getClase();
+string Ejercicio::getNombre() {
+    return nombre;
+}
+string Ejercicio::getDescripcion() {
+    return descripcion;
+}
+string Ejercicio::getAreaCuerpo() {
+    return areaCuerpo;
+}
 
-	bool agregarEspecialidad(string);
-	bool tieneEspecialidad(string);
+string Ejercicio::toString() {
+    stringstream s;
+    s << "Nombre: " << nombre << endl;
+    s << "Descripcion: " << descripcion << endl;
+    s << "Area del cuerpo: " << areaCuerpo << endl;
+    return s.str();
+}
 
-	string toString();
-
-	~Instructor();
-
-
-};
-
+Ejercicio::~Ejercicio() {
+}
