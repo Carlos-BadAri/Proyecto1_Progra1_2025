@@ -13,7 +13,7 @@ Sistema::Sistema(int tam) {
 void Sistema::menu() {
     int opcion;
     do {
-        cout << "--- MENU PRINCIPAL ---\n";
+        cout << "\n--- MENU PRINCIPAL ---\n";
         cout << "1. Listar sucursales" << endl;
         cout << "2. Buscar sucursal" << endl;
         cout << "3. Agregar sucursal" << endl;;
@@ -153,8 +153,7 @@ string Sistema::listarInstructoresPorSucursal(string codigo) {
 void Sistema::menuSucursal(Sucursal* suc) {
     int op;
     do {
-        cout << "entrnado al submenu de la sede" << endl;
-        cout << "--- MENU SUCURSAL (" << suc->getCodigo() << ") ---" << endl;
+        cout << "\n--- MENU SUCURSAL (" << suc->getCodigo() << ") ---" << endl;
         cout << "1. Listar clientes" << endl;
         cout << "2. Listar instructores" << endl;
         cout << "3. Agregar cliente" << endl;
@@ -169,13 +168,13 @@ void Sistema::menuSucursal(Sucursal* suc) {
 
         switch (op) {
         case 1: {
-            cout << "--- Lista de clientes ---" << endl;
+            cout << "\n--- Lista de clientes ---" << endl;
             for (int i = 0; i < suc->getCantClientes(); i++)
                 cout << suc->getCliente(i)->toString() << endl;
             break;
         }
         case 2: {
-            cout << "--- Lista de instructores ---" << endl;
+            cout << "\n--- Lista de instructores ---" << endl;
             for (int i = 0; i < suc->getCantInstructores(); i++)
                 cout << suc->getInstructor(i)->toString() << endl;
             break;
@@ -191,14 +190,12 @@ void Sistema::menuSucursal(Sucursal* suc) {
 
             cout << "Ingrese ID del cliente: ";
             cin >> id;
-            cin.ignore();
             cout << "Ingrese nombre: ";
             getline(cin, nom);
             cout << "Ingrese telefono: ";
             cin >> tel;
             cout << "Ingrese correo: ";
             cin >> correo;
-            cin.ignore();
             cout << "Ingrese fecha de nacimiento (dd/mm/aaaa): ";
             getline(cin, fechaNacimiento);
             cout << "Ingrese sexo (M/F): ";
@@ -226,14 +223,12 @@ void Sistema::menuSucursal(Sucursal* suc) {
 
             cout << "Ingrese ID del instructor: ";
             cin >> id;
-            cin.ignore();
             cout << "Ingrese nombre: ";
             getline(cin, nom);
             cout << "Ingrese telefono: ";
             cin >> tel;
             cout << "Ingrese correo: ";
             cin >> correo;
-            cin.ignore();
             cout << "Ingrese fecha de nacimiento (dd/mm/aaaa): ";
             getline(cin, fechaNacimiento);
 
@@ -261,7 +256,7 @@ void Sistema::menuSucursal(Sucursal* suc) {
 
             int opMed;
             do {
-                cout << "--- Mediciones de " << c->getNom() << " ---" << endl;
+                cout << "\n--- Mediciones de " << c->getNom() << " ---" << endl;
                 cout << "1. Registrar medicion" << endl;
                 cout << "2. Mostrar mediciones" << endl;
                 cout << "0. Volver" << endl;
@@ -326,7 +321,7 @@ void Sistema::menuSucursal(Sucursal* suc) {
         case 7: {
             int opClaseGru;
             do {
-                cout << "--- Clases Grupales ---" << endl;
+                cout << "\n--- Clases Grupales ---" << endl;
                 cout << "1. Matricular cliente" << endl;
                 cout << "2. Desmatricular cliente" << endl;
                 cout << "3. Mostrar inscritos" << endl;
