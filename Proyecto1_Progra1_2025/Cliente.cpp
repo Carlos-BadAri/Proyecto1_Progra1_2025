@@ -214,4 +214,3 @@ Cliente::~Cliente() {
     }
     delete[] vMediciones;
 }
-

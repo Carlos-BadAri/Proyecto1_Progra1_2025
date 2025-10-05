@@ -1,9 +1,21 @@
-Cliente** vClientes;
-int cant;
-int capacidadMax;//Este es tam
-int salon;
-string horario;
-Instructor* ins;
+#pragma once
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+class Instructor;
+class Cliente;
+
+class ClaseGrupal {
+private:
+	string codigo;
+	char tipo;
+	Cliente** vClientes;
+	int cant;
+	int capacidadMax;//Este es tam
+	int salon;
+	string horario;
+	Instructor* ins;
 
 public:
 	ClaseGrupal(string, char, int, int, string, Instructor*);

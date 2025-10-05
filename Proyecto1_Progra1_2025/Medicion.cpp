@@ -164,3 +164,6 @@ string Medicion::toString() {
 
 Medicion::~Medicion() {
 }
+
+Medicion::~Medicion() {
+}

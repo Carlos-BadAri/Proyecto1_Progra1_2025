@@ -238,4 +238,3 @@ Sucursal::~Sucursal() {
     delete[] vClase;
 }
 
-
