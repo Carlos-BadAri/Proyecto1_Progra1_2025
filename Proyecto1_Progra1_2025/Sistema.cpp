@@ -13,7 +13,7 @@ Sistema::Sistema(int tam) {
 void Sistema::menu() {
     int opcion;
     do {
-        cout << "\n--- MENU PRINCIPAL ---\n";
+        cout << "--- MENU PRINCIPAL ---;" << endl;
         cout << "1. Listar sucursales" << endl;
         cout << "2. Buscar sucursal" << endl;
         cout << "3. Agregar sucursal" << endl;;
@@ -153,7 +153,8 @@ string Sistema::listarInstructoresPorSucursal(string codigo) {
 void Sistema::menuSucursal(Sucursal* suc) {
     int op;
     do {
-        cout << "\n--- MENU SUCURSAL (" << suc->getCodigo() << ") ---" << endl;
+        cout << "entrnado al submenu de la sede" << endl;
+        cout << "--- MENU SUCURSAL (" << suc->getCodigo() << ") ---" << endl;
         cout << "1. Listar clientes" << endl;
         cout << "2. Listar instructores" << endl;
         cout << "3. Agregar cliente" << endl;
@@ -168,13 +169,13 @@ void Sistema::menuSucursal(Sucursal* suc) {
 
         switch (op) {
         case 1: {
-            cout << "\n--- Lista de clientes ---" << endl;
+            cout << "--- Lista de clientes ---" << endl;
             for (int i = 0; i < suc->getCantClientes(); i++)
                 cout << suc->getCliente(i)->toString() << endl;
             break;
         }
         case 2: {
-            cout << "\n--- Lista de instructores ---" << endl;
+            cout << "--- Lista de instructores ---" << endl;
             for (int i = 0; i < suc->getCantInstructores(); i++)
                 cout << suc->getInstructor(i)->toString() << endl;
             break;
@@ -190,12 +191,14 @@ void Sistema::menuSucursal(Sucursal* suc) {
 
             cout << "Ingrese ID del cliente: ";
             cin >> id;
+            cin.ignore();
             cout << "Ingrese nombre: ";
             getline(cin, nom);
             cout << "Ingrese telefono: ";
             cin >> tel;
             cout << "Ingrese correo: ";
             cin >> correo;
+            cin.ignore();
             cout << "Ingrese fecha de nacimiento (dd/mm/aaaa): ";
             getline(cin, fechaNacimiento);
             cout << "Ingrese sexo (M/F): ";
@@ -223,12 +226,14 @@ void Sistema::menuSucursal(Sucursal* suc) {
 
             cout << "Ingrese ID del instructor: ";
             cin >> id;
+            cin.ignore();
             cout << "Ingrese nombre: ";
             getline(cin, nom);
             cout << "Ingrese telefono: ";
             cin >> tel;
             cout << "Ingrese correo: ";
             cin >> correo;
+            cin.ignore();
             cout << "Ingrese fecha de nacimiento (dd/mm/aaaa): ";
             getline(cin, fechaNacimiento);
 
@@ -256,7 +261,7 @@ void Sistema::menuSucursal(Sucursal* suc) {
 
             int opMed;
             do {
-                cout << "\n--- Mediciones de " << c->getNom() << " ---" << endl;
+                cout << "--- Mediciones de " << c->getNom() << " ---" << endl;
                 cout << "1. Registrar medicion" << endl;
                 cout << "2. Mostrar mediciones" << endl;
                 cout << "0. Volver" << endl;
@@ -321,36 +326,76 @@ void Sistema::menuSucursal(Sucursal* suc) {
         case 7: {
             int opClaseGru;
             do {
-                cout << "\n--- Clases Grupales ---" << endl;
-                cout << "1. Matricular cliente" << endl;
-                cout << "2. Desmatricular cliente" << endl;
-                cout << "3. Mostrar inscritos" << endl;
+                cout << "--- Clases Grupales ---" << endl;
+                cout << "1. Crear clase grupal" << endl;
+                cout << "2. Matricular cliente" << endl;
+                cout << "3. Desmatricular cliente" << endl;
+                cout << "4. Mostrar inscritos" << endl;
                 cout << "0. Volver" << endl;
                 cout << "Opcion: ";
                 cin >> opClaseGru;
                 cin.ignore();
 
                 if (opClaseGru == 1) {
-                    string idCliente;
-                    string codClase;
+                    string codigo;
+                    string horario;
+                    string idInstructor;
+                    char tipo;
+                    int capacidad;
+                    int salon;
 
-                    cout << "ID Cliente: ";
-                    cin >> idCliente;
-                    cout << "Codigo Clase: ";
-                    cin >> codClase;
-                    Cliente* c = suc->buscarCliente(idCliente);
-                    ClaseGrupal* cl = suc->buscarClase(codClase);
-                    if (c && cl) {
-                        if (cl->agregarCliente(c)) {
-                            cout << "Cliente matriculado" << endl;
+                    cout << "Codigo de la clase: ";
+                    cin >> codigo;
+                    cout << "Tipo de clase (letra): ";
+                    cin >> tipo;
+                    cout << "Capacidad maxima: ";
+                    cin >> capacidad;
+                    cout << "Numero de salon: ";
+                    cin >> salon;
+                    cout << "Horario: ";
+                    cin.ignore();
+                    getline(cin, horario);
+                    cout << "ID del instructor: ";
+                    cin >> idInstructor;
+
+                    Instructor* inst = suc->buscarInstruc(idInstructor);
+                    if (inst) {//Lo que hago aqui es revisar si el instrucotr existe, si asi es crea la clase
+                        ClaseGrupal* nueva = new ClaseGrupal(codigo, tipo, capacidad, salon, horario, inst);
+                        if (suc->agregarClase(nueva)) {
+                            cout << "Clase grupal creada exitosamente." << endl;
                         }
-                        else cout << "No se pudo matricular" << endl;
+                        else {
+                            cout << "No se pudo crear la clase (quizá el código ya existe o no hay espacio)." << endl;
+                            delete nueva;
+                        }
                     }
-                    else cout << "El cliente, la clase o ambos no fueron encontrados" << endl;
+                    else {
+                        cout << "Instructor no encontrado." << endl;
+                    }
                 }
+
                 else if (opClaseGru == 2) {
-                    string idCliente;
-                    string codClase;
+                    string idCliente, codClase;
+
+                    cout << "ID Cliente: ";
+                    cin >> idCliente;
+                    cout << "Codigo Clase: ";
+                    cin >> codClase;
+
+                    Cliente* c = suc->buscarCliente(idCliente);
+                    ClaseGrupal* cl = suc->buscarClase(codClase);
+                    if (c && cl) {
+                        if (cl->agregarCliente(c))
+                            cout << "Cliente matriculado" << endl;
+                        else
+                            cout << "No se pudo matricular" << endl;
+                    }
+                    else
+                        cout << "El cliente, la clase o ambos no fueron encontrados" << endl;
+                }
+
+                else if (opClaseGru == 3) {
+                    string idCliente, codClase;
 
                     cout << "ID Cliente: ";
                     cin >> idCliente;
@@ -361,12 +406,16 @@ void Sistema::menuSucursal(Sucursal* suc) {
                     ClaseGrupal* cl = suc->buscarClase(codClase);
 
                     if (c && cl) {
-                        if (cl->eliminarCliente(idCliente)) cout << "Cliente desmatriculado" << endl;
-                        else cout << "No se pudo desmatricular" << endl;
+                        if (cl->eliminarCliente(idCliente))
+                            cout << "Cliente desmatriculado" << endl;
+                        else
+                            cout << "No se pudo desmatricular" << endl;
                     }
-                    else cout << "Cliente o clase no encontrado" << endl;
+                    else
+                        cout << "Cliente o clase no encontrado" << endl;
                 }
-                else if (opClaseGru == 3) {
+
+                else if (opClaseGru == 4) {
                     string codClase;
                     cout << "Codigo Clase: ";
                     cin >> codClase;
@@ -375,12 +424,14 @@ void Sistema::menuSucursal(Sucursal* suc) {
                     if (cl) {
                         cout << cl->listarClientes() << endl;
                     }
-                    else cout << "Clase no encontrada" << endl;
+                    else
+                        cout << "Clase no encontrada" << endl;
                 }
 
             } while (opClaseGru != 0);
             break;
         }
+
         case 0:
             cout << "Volviendo al menu principal..." << endl;
             break;

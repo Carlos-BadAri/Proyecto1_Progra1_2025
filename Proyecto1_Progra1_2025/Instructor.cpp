@@ -1,5 +1,9 @@
 #include "Instructor.h"
-Instructor::Instructor(){
+#include "Sucursal.h"
+#include "Medicion.h"
+#include "ClaseGrupal.h"
+
+Instructor::Instructor() {
     id = " ";
     nom = " ";
     tel = "";
@@ -14,25 +18,7 @@ Instructor::Instructor(){
     vEspecialidades = new string[tamEspecialidades];
 }
 
-Instructor::Instructor(string id, string nom, string tel, string correo, string fechaNaci, Sucursal* laSucu, Medicion* medicion, ClaseGrupal* clase)
-{
-    this->id = id;
-    this->nom = nom;
-    this->tel = tel;
-    this->correo = correo;
-    fechaNacimiento = fechaNaci;
-    this->laSucu = laSucu;
-    this->medicion = medicion;
-    this->clase = clase;
-
-    tamEspecialidades = 5; 
-    cantEspecialidades = 0;
-    vEspecialidades = new string[tamEspecialidades];
-}
-
-
-
-Instructor::Instructor(string id, string nom, string tel, string correo, string fechaNaci){
+Instructor::Instructor(string id, string nom, string tel, string correo, string fechaNaci) {
     this->id = id;
     this->nom = nom;
     this->tel = tel;
@@ -86,7 +72,7 @@ void Instructor::setFechaNacimiento(string fechaNaci) {
 string Instructor::getFechaNacimiento() {
     return fechaNacimiento;
 }
-void Instructor::setClase(ClaseGrupal* c) { 
+void Instructor::setClase(ClaseGrupal* c) {
     // Validar que tenga la especialidad requerida
     string especialidadReq;
     if (c->getTipo() == 'C') especialidadReq = "CrossFit";
@@ -101,7 +87,8 @@ void Instructor::setClase(ClaseGrupal* c) {
     }
 }
 ClaseGrupal* Instructor::getClase() {
-    return clase; }
+    return clase;
+}
 
 bool Instructor::agregarEspecialidad(string especialidad) {
     if (cantEspecialidades < tamEspecialidades) {
@@ -160,7 +147,6 @@ string Instructor::toString() {
     return ss.str();
 }
 
-Instructor::~Instructor(){
+Instructor::~Instructor() {
     delete[] vEspecialidades;
 }
-

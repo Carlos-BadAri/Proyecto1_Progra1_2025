@@ -1,7 +1,6 @@
 #include "Sistema.h"
 
-int main() {
-    Sistema gym; 
-    gym.menu();
-    return 0;
+void main() {
+	Sistema powerLab;
+	powerLab.menu();
 }
